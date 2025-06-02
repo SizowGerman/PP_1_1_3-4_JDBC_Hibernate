@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public class Util {
 
-    final String url = "jdbc:mysql://localhost:3306";
-    final String user = "admin";
-    final String password = "0000";
+    public static Connection getConnection(){
 
-    public Connection getConnection(){
+        final String url = "jdbc:mysql://localhost:3306";
+        final String user = "admin";
+        final String password = "0000";
 
         Connection conn;
 
