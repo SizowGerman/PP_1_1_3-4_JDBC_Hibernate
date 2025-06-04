@@ -25,21 +25,15 @@ public class UserServiceImpl implements UserService {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.execute();
             System.out.println("Table created");
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Error creating table");
+            e.printStackTrace();
         } finally {
             if (preparedStatement != null) {
                 try {
                     preparedStatement.close();
                 }catch (SQLException e) {
                     System.out.println("Error closing prepared statement after table creation");
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.out.println("Error closing connection after table creation");
                 }
             }
         }
@@ -57,19 +51,13 @@ public class UserServiceImpl implements UserService {
             System.out.println("Table dropped");
         } catch (SQLException e) {
             System.out.println("Error dropping table");
+            e.printStackTrace();
         } finally {
             if (preparedStatement != null) {
                 try {
                     preparedStatement.close();
                 }catch (SQLException e) {
                     System.out.println("Error closing prepared statement after table dropping");
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.out.println("Error closing connection after table dropping");
                 }
             }
         }
@@ -94,13 +82,6 @@ public class UserServiceImpl implements UserService {
                     preparedStatement.close();
                 } catch (SQLException e) {
                     System.out.println("Error closing prepared statement after user insertion");
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.out.println("Error closing connection after user insertion");
                 }
             }
         }
