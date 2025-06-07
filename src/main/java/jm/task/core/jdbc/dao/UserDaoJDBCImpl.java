@@ -34,7 +34,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
 
-        String sql = "DROP TABLE IF EXISTS Users";
+        String sql = "TRUNCATE TABLE Users";
 
         try (Connection conn = Util.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql) ) {
@@ -58,6 +58,8 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setByte(3, age);
 
             preparedStatement.executeUpdate();
+
+            System.out.println("User с именем - " + name + " добавлен в базу данных");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -102,7 +104,8 @@ public class UserDaoJDBCImpl implements UserDao {
                 user.setAge(resultSet.getByte("age"));
 
                 users.add(user);
-                System.out.println("User с именем - " + user.getName() + " добавлен в базу данных");
+
+                System.out.println(user);
             }
 
         } catch (SQLException e) {
